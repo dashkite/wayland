@@ -1,3 +1,4 @@
+import DOM from "@dashkite/dominator"
 import add from "#helpers/add"
 
 debounce = ( f ) ->
@@ -11,18 +12,17 @@ debounce = ( f ) ->
         last = current
         f args...
 
-intersects = ( event ) -> event.isIntersecting
-
 activate = ( T ) ->
   add "activate"
   start T, ->
-    # TODO move into dominator
-    observer = new IntersectionObserver debounce ( events ) =>
-      ( @channel.send name: "activate" ) if ( events.find intersects )?        
-    observer.observe @dom
+    DOM.activate @dom, 
+      debounce => @channel.send name: "activate"
 
+# TODO remove intersection observer?
 deactivate = ( T ) ->
   add "deactivate"
-  # TODO remove intersection observer?
+  start T, ->
+    DOM.deactivate @dom, 
+      debounce => @channel.send name: "deactivate"
 
 export { activate, deactivate }

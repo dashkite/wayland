@@ -39,5 +39,6 @@
     "@dashkite/genie-coffee": "link:../genie-coffee"
   },
   "dependencies": {
+    "@dashkite/dominator": "link:../dominator"
   }
 }
