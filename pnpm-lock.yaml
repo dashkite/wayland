@@ -11,6 +11,18 @@ importers:
       '@dashkite/dominator':
         specifier: link:../dominator
         version: link:../dominator
+      '@dashkite/joy':
+        specifier: link:../joy
+        version: link:../joy
+      '@dashkite/reactive':
+        specifier: link:../reactive
+        version: link:../reactive
+      '@dashkite/stylist':
+        specifier: link:../stylist
+        version: link:../stylist
+      diffhtml:
+        specifier: 1.0.0-beta.19
+        version: 1.0.0-beta.19
     devDependencies:
       '@dashkite/amen':
         specifier: ^0.2.0
@@ -30,6 +42,9 @@ importers:
       '@dashkite/genie-coffee':
         specifier: link:../genie-coffee
         version: link:../genie-coffee
+      '@dashkite/genie-module':
+        specifier: link:../genie-module
+        version: link:../genie-module
 
 packages:
 
@@ -59,6 +74,9 @@ packages:
 
   color-name@1.1.4:
     resolution: {integrity: sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==}
+
+  diffhtml@1.0.0-beta.19:
+    resolution: {integrity: sha512-joNKc9SMaR9qOmci7b5iruBOa/7ddDEeUfl6xP6no+F7sCyFDuPFME5BLcz4g9mIAALPRRatqH1Q1tVgeHGsEw==}
 
   has-flag@4.0.0:
     resolution: {integrity: sha512-EykJT/Q1KjTWctppgIAgfSO0tKVuZUjhgMr17kqTumMl6Afv3EISleU7qZUzoXDFTAHTDC4NOoG/ZxU3EvlMPQ==}
@@ -96,6 +114,8 @@ snapshots:
       color-name: 1.1.4
 
   color-name@1.1.4: {}
+
+  diffhtml@1.0.0-beta.19: {}
 
   has-flag@4.0.0: {}
 

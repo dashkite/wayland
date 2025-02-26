@@ -1,5 +1,5 @@
 import DOM from "@dashkite/dominator"
-import add from "#helpers/add"
+import { add, start } from "./events"
 
 debounce = ( f ) ->
   # ensure the first time always fires
@@ -12,15 +12,12 @@ debounce = ( f ) ->
         last = current
         f args...
 
-activate = ( T ) ->
-  add "activate"
+activate = add "activate", ( T ) ->
   start T, ->
     DOM.activate @dom, 
       debounce => @channel.send name: "activate"
 
-# TODO remove intersection observer?
-deactivate = ( T ) ->
-  add "deactivate"
+deactivate = add "deactivate", ( T ) ->
   start T, ->
     DOM.deactivate @dom, 
       debounce => @channel.send name: "deactivate"

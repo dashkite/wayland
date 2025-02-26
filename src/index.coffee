@@ -1,3 +1,7 @@
 export * from "./handle"
+export * from "./events"
 export * from "./tag"
+export * from "./shadow"
+export * from "./diff"
+export * from "./sheets"
 export * from "./activate"

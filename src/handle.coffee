@@ -1,18 +1,19 @@
-import { getters, properties } from "#helpers/meta"
+import { getters, properties } from "./helpers/meta"
 
 class Handle
 
   constructor: ( @dom ) ->
 
-  getters @, 
+  getters @::, 
     root: -> @shadow ? @dom
     
-  properties @,
+  properties @::,
     html:
       get: -> @root.innerHTML
       set: ( html ) -> @root.innerHTML = html
 
-  on: ( name, handler ) -> @root.addEventListener name, handler.bind @
+  on: ( name, handler ) -> 
+    @root.addEventListener name, handler.bind @
 
   dispatch: ( name, detail ) ->
     @dom.dispatchEvent new CustomEvent name,

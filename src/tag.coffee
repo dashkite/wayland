@@ -1,5 +1,5 @@
-import add from "#helpers/add"
-import Channel from "#helpers/channel"
+import Channel from "@dashkite/reactive/channel"
+import { add } from "./events"
 
 tag = ( T, name ) ->
 
@@ -17,8 +17,4 @@ tag = ( T, name ) ->
   queueMicrotask ->
     customElements.define name, Element
 
-start = add "start"
-connect = add "connect"
-disconnect = add "disconnect"
-
-export { start, connect, disconnect, tag }
+export { tag }
