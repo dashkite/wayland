@@ -1,5 +1,5 @@
 import { getters } from "./helpers/meta"
-import { start } from "./events"
+import { start } from "./reactors"
 
 shadow = ( T ) ->
   getters T::, shadow: -> @dom.shadowRoot

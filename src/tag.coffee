@@ -1,5 +1,5 @@
 import Channel from "@dashkite/reactive/channel"
-import { add } from "./events"
+import { add } from "./reactors"
 
 tag = ( T, name ) ->
 

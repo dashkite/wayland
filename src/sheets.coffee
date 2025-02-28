@@ -1,5 +1,5 @@
 import * as Stylist from "@dashkite/stylist"
-import { start } from "./events"
+import { start } from "./reactors"
 
 sheets = ( T, list ) ->
   start T, ->

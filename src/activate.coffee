@@ -1,5 +1,5 @@
 import DOM from "@dashkite/dominator"
-import { add, start } from "./events"
+import { add, start } from "./reactors"
 
 debounce = ( f ) ->
   # ensure the first time always fires

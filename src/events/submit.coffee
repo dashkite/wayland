@@ -1,4 +1,5 @@
 import DOM from "@dashkite/dominator"
+import { start } from "../reactors"
 
 submit = ( T, handler ) ->
   start T, ->
