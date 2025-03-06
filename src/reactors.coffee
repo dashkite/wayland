@@ -4,6 +4,7 @@ reactor = ( T ) ->
   T.handlers ?= {}
   T::run ?= ->
     for await event from @channel
+      console.log wayland: { event, instance: @ }
       if T.handlers[ event.name ]?
         for handler in T.handlers[ event.name ]
           handler.call @

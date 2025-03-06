@@ -1,3 +1,8 @@
+# TODO handle out of order events?
+#      ex: 2 activates followed by a deactivate
+#      when the actual order was _activate-deactivate-activate_.
+#      not entirely sure it's a thing.
+
 import DOM from "@dashkite/dominator"
 import { add, start } from "./reactors"
 
