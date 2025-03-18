@@ -1,8 +1,4 @@
-# TODO handle out of order events?
-#      ex: 2 activates followed by a deactivate
-#      when the actual order was _activate-deactivate-activate_.
-#      not entirely sure it's a thing.
-
+import * as Fn from "@dashkite/joy/function"
 import DOM from "@dashkite/dominator"
 import { add, start } from "./reactors"
 
@@ -18,12 +14,12 @@ debounce = ( f ) ->
         f args...
 
 activate = add "activate", ( T ) ->
-  start T, ->
+  start T, Fn.once ->
     DOM.activate @dom, 
       debounce => @channel.send name: "activate"
 
 deactivate = add "deactivate", ( T ) ->
-  start T, ->
+  start T, Fn.once ->
     DOM.deactivate @dom, 
       debounce => @channel.send name: "deactivate"
 

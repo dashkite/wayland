@@ -2,6 +2,11 @@ import { getters, properties } from "./helpers/meta"
 
 class Handle
 
+  @mixins: ( mixins ) ->
+    for mixin in mixins
+      mixin @
+    return
+
   constructor: ( @dom ) ->
 
   getters @::, 
