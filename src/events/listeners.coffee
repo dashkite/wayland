@@ -1,6 +1,11 @@
 import DOM from "@dashkite/dominator"
 import { start } from "../reactors"
 
+listen = ( name, selector, handler ) ->
+  ( T ) ->
+    start T, ->
+      DOM.listen name, selector, handler
+
 Listeners =
 
   selector: ( name ) ->  
@@ -23,6 +28,7 @@ click = Listeners.selector "click"
 submit = Listeners.semantic "submit"
 
 export {
+  listen
   change
   click
   submit

@@ -5,6 +5,8 @@ tag = ( name ) ->
 
   ( T ) ->
 
+    T.tag = name
+
     class Element extends HTMLElement
       constructor: ->
         super()
