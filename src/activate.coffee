@@ -1,6 +1,6 @@
 import * as Fn from "@dashkite/joy/function"
 import DOM from "@dashkite/dominator"
-import { add, start } from "./reactors"
+import { nullary, start } from "./reactors"
 
 debounce = ( f ) ->
   # ensure the first time always fires
@@ -13,13 +13,15 @@ debounce = ( f ) ->
         last = current
         f args...
 
-activate = add "activate", ( T ) ->
-  start T, Fn.once ->
-    DOM.activate @dom, 
+# TODO ensure we don't add multiple initializers
+
+activate = nullary "activate", ( T ) ->
+  start T, ->
+    DOM.activate @dom,
       debounce => @channel.send name: "activate"
 
-deactivate = add "deactivate", ( T ) ->
-  start T, Fn.once ->
+deactivate = nullary "deactivate", ( T ) ->
+  start T, ->
     DOM.deactivate @dom, 
       debounce => @channel.send name: "deactivate"
 

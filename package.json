@@ -41,6 +41,7 @@
   },
   "dependencies": {
     "@dashkite/dominator": "link:../dominator",
+    "@dashkite/generic": "link:../generic",
     "@dashkite/joy": "link:../joy",
     "@dashkite/reactive": "link:../reactive",
     "@dashkite/stylist": "link:../stylist",

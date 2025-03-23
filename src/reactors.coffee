@@ -1,12 +1,14 @@
 import * as Fn from "@dashkite/joy/function"
+import * as Type from "@dashkite/joy/type"
 import Generic from "@dashkite/generic"
+
 import { Handle } from "./handle"
 
 dispatcher = ( reactor ) ->
+  handlers = @constructor.handlers
   for await event from reactor
-    console.log wayland: { event, instance: @ }
-    if T.handlers[ event.name ]?
-      for handler in T.handlers[ event.name ]
+    if handlers[ event.name ]?
+      for handler in handlers[ event.name ]
         handler.call @
   return
 
@@ -19,24 +21,70 @@ reactors = ( list ) ->
   ( T ) ->
     T.handlers ?= {}
     T::run = ->
-      ( Fn.pipe ( reactor.bind @ for reactor in list ) @channel )
+      (( Fn.pipe ( reactor.bind @ for reactor in list  )) @channel )
 
-# IMPORTANT mixin fn here must be idempotent
+isHandleClass = Type.isDerivedFrom Handle
 
-add = ( name, mixin ) ->
+add = ( T, name ) ->
+  T.handlers ?= {}
+  T.handlers[ name ] ?= []
+
+listen = ( T, name, handler ) ->
+  T.handlers[ name ].push handler
+
+nullary = ( name, mixin  ) ->
 
   ( Generic.make name )
 
-    .define [ Function ], ( handler ) ->
-      ( T ) ->
-        ( T.handlers[ name ] ?= [] ).push handler
-        mixin? T
-
-    .define [ Handle ], ( T ) ->
+    .define [ isHandleClass, Function ], ( T, handler ) -> 
+      add T, name
+      listen T, name, handler
       mixin? T
 
-start = add "start"
-connect = add "connect"
-disconnect = add "disconnect"
+    .define [ Function ], ( handler ) ->
+      ( T ) -> 
+        add T, name
+        listen T, name, handler
+        mixin? T
 
-export { reactor, add, start, connect, disconnect, dispatcher }
+    .define [ isHandleClass ], ( T ) ->
+      add T, name
+      mixin? T
+
+unary = ( name, mixin ) ->
+
+  ( Generic.make name )
+
+    .define [ isHandleClass, Type.isAny, Function ], ( T, x, handler ) -> 
+      ( T ) -> 
+        add T, name
+        listen T, name, handler
+        mixin T, x
+
+    .define [ Type.isAny, Function ], ( x, handler ) ->
+      ( T ) -> 
+        add T, name
+        listen T, name, handler
+        mixin T, x
+
+    .define [ Type.isAny ], ( x ) ->
+      ( T ) ->
+        add T, name
+        mixin T, x
+
+start = nullary "start"
+connect = nullary "connect"
+disconnect = nullary "disconnect"
+
+export { 
+  dispatcher 
+  reactor
+  reactors
+  # add
+  # listen
+  nullary
+  unary
+  start
+  connect
+  disconnect
+}

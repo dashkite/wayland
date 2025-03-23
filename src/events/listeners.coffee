@@ -4,7 +4,9 @@ import { start } from "../reactors"
 listen = ( name, selector, handler ) ->
   ( T ) ->
     start T, ->
-      DOM.listen name, selector, handler
+      DOM.listen @root, name, ( event ) ->
+        if DOM.matches select, event
+          handler event
 
 Listeners =
 

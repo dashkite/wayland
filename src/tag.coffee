@@ -1,5 +1,4 @@
 import Channel from "@dashkite/reactive/channel"
-import { add } from "./reactors"
 
 tag = ( name ) ->
 
@@ -16,6 +15,8 @@ tag = ( name ) ->
         @handle.channel.send name: "start"
       connectedCallback: -> @handle.channel.send name: "connect"
       disconnectedCallback: -> @handle.channel.send name: "disconnect"
+
+    T.Element = Element
 
     # give the rest of the mixins a chance to load...
     queueMicrotask ->

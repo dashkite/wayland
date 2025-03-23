@@ -9,10 +9,10 @@ class Handle
 
   constructor: ( @dom ) ->
 
-  getters @::, 
+  getters @, 
     root: -> @shadow ? @dom
     
-  properties @::,
+  properties @,
     html:
       get: -> @root.innerHTML
       set: ( html ) -> @root.innerHTML = html

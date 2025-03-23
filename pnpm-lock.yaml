@@ -11,6 +11,9 @@ importers:
       '@dashkite/dominator':
         specifier: link:../dominator
         version: link:../dominator
+      '@dashkite/generic':
+        specifier: link:../generic
+        version: link:../generic
       '@dashkite/joy':
         specifier: link:../joy
         version: link:../joy
