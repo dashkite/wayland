@@ -13,8 +13,6 @@ debounce = ( f ) ->
         last = current
         f args...
 
-# TODO ensure we don't add multiple initializers
-
 activate = nullary "activate", ( T ) ->
   start T, ->
     DOM.activate @dom,

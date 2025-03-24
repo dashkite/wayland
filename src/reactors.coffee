@@ -25,10 +25,6 @@ reactors = ( list ) ->
 
 isHandleClass = Type.isDerivedFrom Handle
 
-add = ( T, name ) ->
-  T.handlers ?= {}
-  T.handlers[ name ] ?= []
-
 listen = ( T, name, handler ) ->
   T.handlers[ name ].push handler
 
@@ -36,41 +32,51 @@ nullary = ( name, mixin  ) ->
 
   ( Generic.make name )
 
-    .define [ isHandleClass, Function ], ( T, handler ) -> 
-      add T, name
-      listen T, name, handler
-      mixin? T
-
     .define [ Function ], ( handler ) ->
-      ( T ) -> 
-        add T, name
-        listen T, name, handler
-        mixin? T
+      ( T ) ->
+        ( mixin? T ) if ! T.handlers?[ name ]?
+        T.handlers ?= {}
+        T.handlers[ name ] ?= []
+        T.handlers[ name ].push handler
 
     .define [ isHandleClass ], ( T ) ->
-      add T, name
-      mixin? T
+      ( mixin? T ) if ! T.handlers?[ name ]?
+      T.handlers ?= {}
+      T.handlers[ name ] ?= []
+
+    .define [ isHandleClass, Function ], ( T, handler ) -> 
+      ( mixin? T ) if ! T.handlers?[ name ]?
+      T.handlers ?= {}
+      T.handlers[ name ] ?= []
+      T.handlers[ name ].push handler
 
 unary = ( name, mixin ) ->
 
   ( Generic.make name )
 
-    .define [ isHandleClass, Type.isAny, Function ], ( T, x, handler ) -> 
-      ( T ) -> 
-        add T, name
-        listen T, name, handler
-        mixin T, x
-
     .define [ Type.isAny, Function ], ( x, handler ) ->
       ( T ) -> 
-        add T, name
-        listen T, name, handler
+        T.handlers ?= {}
+        T.handlers[ name ] ?= []
+        T.handlers[ name ].push handler
         mixin T, x
 
     .define [ Type.isAny ], ( x ) ->
       ( T ) ->
-        add T, name
+        T.handlers ?= {}
+        T.handlers[ name ] ?= []
         mixin T, x
+
+    .define [ isHandleClass, Type.isAny, Function ], ( T, x, handler ) -> 
+      T.handlers ?= {}
+      T.handlers[ name ] ?= []
+      T.handlers[ name ].push handler
+      mixin T, x
+
+    .define [ isHandleClass, Type.isAny, Function ], ( T, x ) -> 
+      T.handlers ?= {}
+      T.handlers[ name ] ?= []
+      mixin T, x
 
 start = nullary "start"
 connect = nullary "connect"
@@ -80,8 +86,6 @@ export {
   dispatcher 
   reactor
   reactors
-  # add
-  # listen
   nullary
   unary
   start
