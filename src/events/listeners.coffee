@@ -1,11 +1,12 @@
 import DOM from "@dashkite/dominator"
 import { start } from "../reactors"
 
-listen = ( name, selector, handler ) ->
+listen = ( name, selector, _handler ) ->
   ( T ) ->
     start T, ->
+      handler = _handler.bind @
       DOM.listen @root, name, ( event ) ->
-        if DOM.matches select, event
+        if DOM.matches selector, event
           handler event
 
 Listeners =
