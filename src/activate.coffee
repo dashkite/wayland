@@ -1,5 +1,5 @@
 import * as Fn from "@dashkite/joy/function"
-import DOM from "@dashkite/dominator"
+import * as DOM from "@dashkite/dominator"
 import { nullary, start } from "./reactors"
 
 debounce = ( f ) ->

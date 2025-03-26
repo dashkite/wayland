@@ -1,4 +1,4 @@
-import DOM from "@dashkite/dominator"
+import * as DOM from "@dashkite/dominator"
 import { start } from "../reactors"
 
 listen = ( name, selector, _handler ) ->
