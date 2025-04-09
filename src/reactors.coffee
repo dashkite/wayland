@@ -14,7 +14,7 @@ dispatcher = ( reactor ) ->
 
 reactor = ( T ) ->
   T.handlers ?= {}
-  T::run = -> (( dispatcher @ ) @channel )
+  T::run = -> (( dispatcher.bind @ ) @channel )
 
 reactors = ( list ) ->
   list = [ list..., dispatcher ]
