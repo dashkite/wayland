@@ -23,7 +23,7 @@ Listeners =
     ( handler ) ->
       ( T ) ->
         start T, ->
-          DOM.submit @root,
+          DOM[ name ] @root,
             handler.bind @
 
 change = Listeners.selector "change"
