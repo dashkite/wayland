@@ -2,7 +2,7 @@ import * as Fn from "@dashkite/joy/function"
 import * as Type from "@dashkite/joy/type"
 import Generic from "@dashkite/generic"
 
-import { Handle } from "./handle"
+import { Handle } from "../handle"
 
 dispatcher = ( reactor ) ->
   handlers = @constructor.handlers
@@ -21,8 +21,8 @@ reactors = ( list ) ->
   ( T ) ->
     T.handlers ?= {}
     T::run = ->
-      (( Fn.pipe ( reactor.bind @ for reactor in list  )) @channel )
-
+      (( Fn.pipe ( reactor.bind @ for reactor in list )) @channel )
+          
 isHandleClass = Type.isDerivedFrom Handle
 
 listen = ( T, name, handler ) ->
