@@ -11,7 +11,7 @@ tag = ( name ) ->
         super()
         @handle = new T @
         @handle.channel = Channel.make()
-        @handle.run()
+        @handle.run @handle.channel
         @handle.channel.send name: "start"
       connectedCallback: -> @handle.channel.send name: "connect"
       disconnectedCallback: -> @handle.channel.send name: "disconnect"

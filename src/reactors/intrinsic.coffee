@@ -16,13 +16,17 @@ reactor = ( T ) ->
   T.handlers ?= {}
   T::run = -> (( dispatcher.bind @ ) @channel )
 
-reactors = ( list ) ->
-  list = [ list..., dispatcher ]
-  ( T ) ->
-    T.handlers ?= {}
-    T::run = ->
-      (( Fn.pipe ( reactor.bind @ for reactor in list )) @channel )
-          
+reactors = do ->
+
+  ( Generic.make "Wayland.reactors" )
+  
+    .define [ Array ], ( list ) ->
+      ( T ) ->
+        T.handlers ?= {}
+        T::run = Fn.bpipe [ list..., dispatcher ]
+
+    .define [ Function ], ( f ) -> reactors [ f ]
+                  
 isHandleClass = Type.isDerivedFrom Handle
 
 listen = ( T, name, handler ) ->
