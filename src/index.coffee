@@ -1,9 +1,10 @@
 export * from "./handle"
+export * from "./tag"
 export * from "./reactors"
 export * from "./render"
-export * from "./tag"
 export * from "./shadow"
 export * from "./sheets"
 export * from "./events"
-export * from "./activate"
+
 export * from "./modified"
+export * from "./show"
