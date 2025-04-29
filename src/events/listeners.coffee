@@ -2,18 +2,41 @@ import Generic from "@dashkite/generic"
 import * as DOM from "@dashkite/dominator"
 import { start } from "../reactors"
 
+# TODO provide interface for intercept / stop propagation
+#      should we do this by default?
+#      if so, how to bypass?
+#      if not, how to make that convenient
+#      especially for domevent -> logical event mapping interface
+
+snapshot = ( event ) ->
+  { name, target } = event
+  path = event.composedPath()
+  { name, target, path }
+
+# TODO add combinators for building up custom handlers
+# Ex: matches, closest, composedPath (path), etc.
+
+# TODO update implementations to use combinators
+# see: https://app.excalidraw.com/s/9gcldZOa5J7/3iZv6cdTMV
+
 listen = do ->
 
   ( Generic.make "listen" )
   
-    .define [ String, String ], ( name, selector ) ->
-      listen name, selector, name
-
-    .define [ String, String, String ], ( name, selector, alias ) ->
+    .define [ String, Function ], ( name, handler ) ->
       ( T ) ->
         start T, ->
-          DOM.listen @root, name, ( domevent ) =>
-            if DOM.matches selector, domevent
+          DOM.listen @root, name, ( handler.bind @ )
+
+    .define [ String, String ], ( name, selector ) ->
+      listen name, name, selector
+
+    .define [ String, String, String ], ( name, alias, selector ) ->
+      ( T ) ->
+        start T, ->
+          DOM.listen @root, name, ( event ) =>
+            if DOM.closest selector, event
+              domevent = snapshot event
               @channel.send { name: alias, domevent  }
 
     .define [ String, String, Function ], ( name, selector, handler ) ->
@@ -21,18 +44,24 @@ listen = do ->
         start T, ->
           handler = handler.bind @
           DOM.listen @root, name, ( event ) ->
-            if DOM.matches selector, event
+            if DOM.closest selector, event
               handler event
+
 
 Listeners =
 
   selector: ( name ) ->  
-    # handler here could be an alias
-    ( selector, handler ) ->
-      if handler?
-        listen name, selector, handler
-      else
+
+    ( Generic.make name )
+
+      .define [ String ], ( selector ) ->
         listen name, selector
+
+      .define [ String, String ], ( alias, selector ) ->
+        listen name, alias, selector
+
+      .define [ String, Function ], ( selector, handler ) ->
+        listen name, selector, handler
 
   semantic: ( name ) ->
 
@@ -49,7 +78,8 @@ Listeners =
         .define [ String ], ( alias ) ->
           ( T ) ->
             start T, ->
-              f @root, ( domevent ) => 
+              f @root, ( event ) => 
+                domevent = snapshot event
                 @channel.send { name: alias, domevent }
 
         .define [ Function ], ( handler ) ->

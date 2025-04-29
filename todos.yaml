@@ -1,0 +1,15 @@
+- title: Provide Interface For Intercept / Stop Propagation
+  path: ./src/events/listeners.coffee
+  line: 5
+  body: >-
+    Should we do this by default? if so, how to bypass? if not, how to make that
+    convenient especially for domevent -> logical event mapping interface
+- title: Add Combinators For Building Up Custom Handlers
+  path: ./src/events/listeners.coffee
+  line: 16
+  body: 'Ex: matches, closest, composedPath (path), etc.'
+- title: Update Implementations To Use Combinators
+  path: ./src/events/listeners.coffee
+  line: 19
+  body: 'See: https://app.excalidraw.com/s/9gcldZOa5J7/3iZv6cdTMV'
+
