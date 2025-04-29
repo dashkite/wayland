@@ -2,22 +2,13 @@ import Generic from "@dashkite/generic"
 import * as DOM from "@dashkite/dominator"
 import { start } from "../reactors"
 
-# TODO provide interface for intercept / stop propagation
-#      should we do this by default?
-#      if so, how to bypass?
-#      if not, how to make that convenient
-#      especially for domevent -> logical event mapping interface
 
 snapshot = ( event ) ->
   { name, target } = event
   path = event.composedPath()
   { name, target, path }
 
-# TODO add combinators for building up custom handlers
-# Ex: matches, closest, composedPath (path), etc.
 
-# TODO update implementations to use combinators
-# see: https://app.excalidraw.com/s/9gcldZOa5J7/3iZv6cdTMV
 
 listen = do ->
 
