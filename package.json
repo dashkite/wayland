@@ -22,6 +22,9 @@
       "browser": "./build/browser/src/index.js"
     }
   },
+  "imports": {
+    "#helpers/*": "./build/browser/src/helpers/*.js"
+  },
   "main": "build/browser/src/index.js",
   "files": [
     "build/browser/src"

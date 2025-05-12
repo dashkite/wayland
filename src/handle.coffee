@@ -1,23 +1,39 @@
-import { getters, properties } from "./helpers/meta"
+import metaclass from "./metaclass"
 
-class Handle
+class Handle extends metaclass()
 
-  @mixins: ( mixins ) ->
-    for mixin in mixins
-      mixin @
-    return
+  constructor: ( dom ) ->
+    super()
+    @dom = dom
 
-  constructor: ( @dom ) ->
-
-  getters @, 
+  @getters
     root: -> @shadow ? @dom
     
-  properties @,
+  @properties
     html:
       get: -> @root.innerHTML
       set: ( html ) -> @root.innerHTML = html
 
-  on: ( name, handler ) -> 
+  @tag: ( name ) ->
+
+    T = @
+    
+    class Element extends HTMLElement
+      constructor: ->
+        super()
+        @handle = new T @
+        @handle.run()
+        @handle.channel.send name: "start"
+      connectedCallback: -> @handle.channel.send name: "connect"
+      disconnectedCallback: -> @handle.channel.send name: "disconnect"
+    
+    # redefine @tag? after all, it doesn't make sense to call it twice?
+    @tag = name
+    @Element = Element
+
+    customElements.define name, Element
+
+  listen: ( name, handler ) -> 
     @root.addEventListener name, handler.bind @
 
   dispatch: ( name, detail ) ->
@@ -28,3 +44,4 @@ class Handle
       composed: true
 
 export { Handle }
+export default Handle

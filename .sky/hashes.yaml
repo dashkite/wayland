@@ -2,15 +2,15 @@ build/browser/src/events/submit.js: q_IbRKkW
 build/browser/src/sheets.js: qT6l9pT2
 build/browser/src/tag.js: 51HM2kBX
 build/browser/src/helpers/meta.js: yQ5oVAg8
-build/browser/src/handle.js: MKDx1OCK
+build/browser/src/handle.js: owbzaGOk
 build/browser/src/reactors.js: 1o0xsY7k
 build/browser/src/activate.js: '-Mlhwn7U'
 build/browser/src/index.js: _rjqt90L
 build/browser/src/events/index.js: iXv_Pdzm
-build/browser/src/shadow.js: uAOgMMYL
+build/browser/src/shadow.js: 1nQhX0Ta
 build/browser/src/events/click.js: 5-uLIIMP
 build/browser/src/diff.js: S2u1bxnA
-build/browser/src/events/listeners.js: HFIM93ek
+build/browser/src/events/listeners.js: uOgB_uzu
 build/browser/src/modified.js: fDTx055p
 build/browser/src/reactors/activation.js: MiXxpAb-
 build/browser/src/reactors/builtin.js: _OxN_ozV
@@ -18,3 +18,4 @@ build/browser/src/reactors/index.js: MYnaFzTj
 build/browser/src/reactors/intrinsic.js: 6Q9vlIc2
 build/browser/src/render.js: I2Phg2Sf
 build/browser/src/show.js: xdsBfGqz
+build/browser/src/helpers/metaclass.js: g2pCgJA-
