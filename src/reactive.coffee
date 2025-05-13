@@ -1,8 +1,9 @@
 import * as Fn from "@dashkite/joy/function"
 import Channel from "@dashkite/reactive/channel"
+import once from "./helpers/once"
 import Handle from "./handle"
 
-reactive ( base = Handle ) ->
+reactive = once ( base = Handle ) ->
 
   class extends base
 
@@ -37,3 +38,4 @@ reactive ( base = Handle ) ->
       @handlers.disconnect.push handler
 
 export { reactive }
+export default reactive

@@ -1,7 +1,8 @@
 import $ from "@dashkite/zest"
+import once from "./helpers/once"
 import Handle from "./handle"
 
-renderable = ( base = Handle ) ->
+renderable = once ( base = Handle ) ->
 
   class extends base
 

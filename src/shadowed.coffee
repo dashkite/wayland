@@ -1,7 +1,8 @@
 import * as Fn from "@dashkite/joy/function"
+import once from "./helpers/once"
 import Handle from "./handle"
 
-shadowed = ( base = Handle ) ->
+shadowed = once ( base = Handle ) ->
 
   class extends base
 

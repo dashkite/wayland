@@ -4,6 +4,8 @@ metaclass = ( base = Object ) ->
 
   class extends base
 
+    @_mixins: new Set
+
     @getters: ( dictionary ) -> getters dictionary, @::
 
     @properties: ( dictionary ) -> properties dictionary, @::

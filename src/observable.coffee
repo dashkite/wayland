@@ -1,10 +1,11 @@
 import $ from "@dashkite/zest"
-
+import once from "./helpers/once"
+import { Handle } from "./handle"
 import { reactive } from "./reactive"
 
-observable = ( base = reactive()) ->
+observable = once ( base = Handle ) ->
   
-  class extends base
+  class extends reactive base
     
     @getter
 
@@ -32,3 +33,4 @@ observable = ( base = reactive()) ->
       @handlers.modify.push handler
 
 export { observable }
+export default observable

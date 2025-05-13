@@ -1,14 +1,16 @@
 import $ from "@dashkite/zest"
-import { reactive } from "./reactive"
+import once from "./helpers/once"
+import Handle from "./handle"
+import reactive from "./reactive"
 
 snapshot = ( event ) ->
   { name, target } = event
   path = event.composedPath()
   { name, target, path }
 
-eventful = ( base = reactive()) ->
+eventful = once ( base = Handle ) ->
   
-  class extends base
+  class extends reactive base
     
     @listen: ( event ) ->
 
@@ -91,5 +93,5 @@ eventful = ( base = reactive()) ->
 
     @unload: -> @listen "unload"
 
-
 export { eventful }
+export default eventful

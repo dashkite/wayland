@@ -1,7 +1,9 @@
 import * as Stylist from "@dashkite/stylist"
+import once from "./helpers/once"
 import Handle from "./handle"
 
-styled = ( base = Handle ) ->
+
+styled = once ( base = Handle ) ->
   
   class extends base
 

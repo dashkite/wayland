@@ -1,10 +1,11 @@
 import $ from "@dashkite/zest"
+import once from "./helpers/once"
+import Handle from "./handle"
+import reactive from "./reactive"
 
-import { reactive } from "./reactive"
-
-recurrent = ( base = reactive()) ->
+recurrent = once ( base = Handle ) ->
   
-  class extends base
+  class extends reactve base
     
     @start ->
       $ @dom
