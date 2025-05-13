@@ -10,20 +10,41 @@ eventful = ( base = reactive()) ->
   
   class extends base
     
-    # TODO we want apply to be bound to @
     @listen: ( event ) ->
-      new Proxy (( $ @root ).listen event ),
-        get: ( target, name ) =>
-          if name == "send"
-            ( alias ) =>
-              target.apply ( event ) =>
-                @channel.send
-                  name: alias ? event.name
-                  event: event
-                  snapshot: snapshot event
-          else
-            target[ name ]
-      
+
+      do ({ fx } = {}) =>
+
+        proxy = new Proxy ( fx = [] ),
+          get: ( target, name ) ->
+
+            switch name
+
+              when "send"
+                ( alias ) ->
+                  target.push ( listener ) ->
+                    listener.apply ( event ) =>
+                      @channel.send
+                        name: alias ? event.name
+                        domevent: event
+                        snapshot: snapshot event
+
+              when "apply"
+                ( handler ) ->
+                  target.push ( listener ) ->                  
+                    listener.apply ( handler.bind @ )
+
+              else
+                ( args... ) ->
+                  target.push ( listener ) ->
+                    listener[ name ] args...
+
+        @start ->
+          f = Fn.pipe fx
+          listener = ( $ @root ).listen event
+          f.call @, listener
+
+        proxy
+
     @bind: -> @listen "bind"
 
     @blur: -> @listen "blur"
