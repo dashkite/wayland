@@ -23,6 +23,9 @@ importers:
       '@dashkite/stylist':
         specifier: link:../stylist
         version: link:../stylist
+      '@dashkite/zest':
+        specifier: link:../zest
+        version: link:../zest
       diffhtml:
         specifier: 1.0.0-beta.19
         version: 1.0.0-beta.19

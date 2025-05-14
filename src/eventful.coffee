@@ -1,3 +1,4 @@
+import * as Fn from "@dashkite/joy/function"
 import $ from "@dashkite/zest"
 import once from "./helpers/once"
 import Handle from "./handle"
@@ -24,21 +25,25 @@ eventful = once ( base = Handle ) ->
               when "send"
                 ( alias ) ->
                   target.push ( listener ) ->
-                    listener.apply ( event ) =>
-                      @channel.send
+                    self = @
+                    listener.apply ( event ) ->
+                      self.channel.send
                         name: alias ? event.name
                         domevent: event
                         snapshot: snapshot event
+                  proxy
 
               when "apply"
                 ( handler ) ->
                   target.push ( listener ) ->                  
                     listener.apply ( handler.bind @ )
+                  proxy
 
               else
                 ( args... ) ->
                   target.push ( listener ) ->
                     listener[ name ] args...
+                  proxy
 
         @start ->
           f = Fn.pipe fx

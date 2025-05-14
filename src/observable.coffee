@@ -1,32 +1,35 @@
 import $ from "@dashkite/zest"
 import once from "./helpers/once"
-import { Handle } from "./handle"
-import { reactive } from "./reactive"
+import Handle from "./handle"
+import reactive from "./reactive"
 
 observable = once ( base = Handle ) ->
   
   class extends reactive base
     
-    @getter
+    @classGetters
 
       observe: ->
 
-        handler = => @channel.send name: "modify"
+        handler = -> @channel.send name: "modify"
 
         attributes: ( names ) =>
-          $ @dom
-            .modify
-            .attributes names, handler
+          @start ->
+            $ @dom
+              .modify
+              .attributes names, handler.bind @
 
         children: =>
-          $ @dom
-            .modify
-            .children handler
+          @start ->
+            $ @dom
+              .modify
+              .children handler.bind @
  
         descendents: =>
-          $ @dom
-            .modify
-            .descendents handler
+          @start ->
+            $ @dom
+              .modify
+              .descendents handler.bind @
             
     @modify: ( handler ) ->
       @handlers.modify ?= []

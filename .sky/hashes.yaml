@@ -2,10 +2,10 @@ build/browser/src/events/submit.js: q_IbRKkW
 build/browser/src/sheets.js: qT6l9pT2
 build/browser/src/tag.js: 51HM2kBX
 build/browser/src/helpers/meta.js: yQ5oVAg8
-build/browser/src/handle.js: owbzaGOk
+build/browser/src/handle.js: S5tmGRlS
 build/browser/src/reactors.js: 1o0xsY7k
 build/browser/src/activate.js: '-Mlhwn7U'
-build/browser/src/index.js: _rjqt90L
+build/browser/src/index.js: ee3CNtyy
 build/browser/src/events/index.js: iXv_Pdzm
 build/browser/src/shadow.js: 1nQhX0Ta
 build/browser/src/events/click.js: 5-uLIIMP
@@ -19,3 +19,13 @@ build/browser/src/reactors/intrinsic.js: 6Q9vlIc2
 build/browser/src/render.js: I2Phg2Sf
 build/browser/src/show.js: xdsBfGqz
 build/browser/src/helpers/metaclass.js: g2pCgJA-
+build/browser/src/styled.js: viLTR9Oy
+build/browser/src/helpers/once.js: _gC-eNLy
+build/browser/src/recurrent.js: _P83zeD3
+build/browser/src/renderable.js: RTRbh_At
+build/browser/src/observable.js: mIABc0gL
+build/browser/src/shadowed.js: hj6lbE5o
+build/browser/src/metaclass.js: FmevkwGw
+build/browser/src/reactive.js: IUBbURvR
+build/browser/src/eventful.js: wzmIEmRT
+build/browser/src/styleable.js: PZEAKzQ6

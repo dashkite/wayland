@@ -11,9 +11,11 @@ reactive = once ( base = Handle ) ->
     @_reactors = []
     
     run: ->
-      filter = Fn.bpipe @constructor._reactors
       @channel = Channel.make()
-      for await event from filter.call @, @channel
+      filter = Fn.pipe @constructor._reactors
+      reactor = filter.call @, @channel
+      handlers = @constructor._handlers
+      for await event from reactor
         if handlers[ event.name ]?
           for handler in handlers[ event.name ]
             handler.call @
@@ -26,16 +28,16 @@ reactive = once ( base = Handle ) ->
       @_reactors = [ fx..., @_reactors... ]
 
     @start: ( handler ) ->
-      @handlers.start ?= []
-      @handlers.start.push handler
+      @_handlers.start ?= []
+      @_handlers.start.push handler
       
     @connect: ( handler ) ->
-      @handlers.connect ?= []
-      @handlers.connect.push handler
+      @_handlers.connect ?= []
+      @_handlers.connect.push handler
 
     @disconnect: ( handler ) ->
-      @handlers.disconnect ?= []
-      @handlers.disconnect.push handler
+      @_handlers.disconnect ?= []
+      @_handlers.disconnect.push handler
 
 export { reactive }
 export default reactive

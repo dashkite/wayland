@@ -5,7 +5,7 @@ import reactive from "./reactive"
 
 recurrent = once ( base = Handle ) ->
   
-  class extends reactve base
+  class extends reactive base
     
     @start ->
       $ @dom
@@ -24,3 +24,4 @@ recurrent = once ( base = Handle ) ->
       @handlers.hide.push handler
 
 export { recurrent }
+export default recurrent

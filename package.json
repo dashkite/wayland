@@ -49,6 +49,7 @@
     "@dashkite/joy": "link:../joy",
     "@dashkite/reactive": "link:../reactive",
     "@dashkite/stylist": "link:../stylist",
+    "@dashkite/zest": "link:../zest",
     "diffhtml": "1.0.0-beta.19"
   }
 }

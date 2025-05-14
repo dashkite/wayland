@@ -13,3 +13,4 @@ renderable = once ( base = Handle ) ->
         .render content
 
 export { renderable }
+export default renderable
