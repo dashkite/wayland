@@ -9,10 +9,15 @@ snapshot = ( event ) ->
   path = event.composedPath()
   { name, target, path }
 
-eventful = once ( base = Handle ) ->
+console.log import.meta.url
+key = Symbol( import.meta.url )
+
+eventful = once key, ( base = Handle ) ->
   
   class extends reactive base
-    
+
+    @[ key ]: eventful
+
     @listen: ( event ) ->
 
       do ({ fx } = {}) =>
@@ -53,49 +58,27 @@ eventful = once ( base = Handle ) ->
         proxy
 
     @bind: -> @listen "bind"
-
     @blur: -> @listen "blur"
-
     @change: -> @listen "change"
-
     @click: -> @listen "click"
-
     @doubleclick: -> @listen "doubleclick"
-
     @focus: -> @listen "focus"
-
     @focusin: -> @listen "focusin"
-
     @focusout: -> @listen "focusout"
-
     @keyup: -> @listen "keyup"
-
     @keydown: -> @listen "keydown"
-
     @input: -> @listen "input"
-
     @load: -> @listen "load"
-
     @mouseup: -> @listen "mouseup"
-
     @mousedown: -> @listen "mousedown"
-
     @mouseenter: -> @listen "mouseenter"
-
     @mouseover: -> @listen "mouseover"
-
     @mouseout: -> @listen "mouseout"
-
     @mousemove: -> @listen "mousemove"
-
     @resize: -> @listen "resize"
-
     @scroll: -> @listen "scroll"
-
     @select: -> @listen "select"
-
     @submit: -> @listen "submit"
-
     @unload: -> @listen "unload"
 
 export { eventful }

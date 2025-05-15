@@ -3,16 +3,22 @@ import once from "./helpers/once"
 import Handle from "./handle"
 import reactive from "./reactive"
 
-shadowed = once ( base = Handle ) ->
+key = Symbol( import.meta.url )
+
+shadowed = once key, ( base = Handle ) ->
 
   class extends reactive base
+
+    @[ key ]: shadowed
 
     @getters
       shadow: -> @dom.shadowRoot
 
     @start ->
       if !@dom.shadowRoot?
-        @dom.attachShadow mode: "open", delegatesFocus: true
+        @dom.attachShadow 
+          mode: "open"
+          delegatesFocus: true
 
 export { shadowed }
 export default shadowed

@@ -3,9 +3,13 @@ import once from "./helpers/once"
 import Handle from "./handle"
 import reactive from "./reactive"
 
-recurrent = once ( base = Handle ) ->
+key = Symbol( import.meta.url )
+
+recurrent = once key, ( base = Handle ) ->
   
   class extends reactive base
+
+    @[ key ]: recurrent
     
     @start ->
       $ @dom

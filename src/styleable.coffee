@@ -3,9 +3,13 @@ import once from "./helpers/once"
 import Handle from "./handle"
 import reactive from "./reactive"
 
-styleable = once ( base = Handle ) ->
+key = Symbol( import.meta.url )
+
+styleable = once key, ( base = Handle ) ->
   
   class extends reactive base
+
+    @[ key ]: styleable
 
     @sheets: ( list ) ->
       @start ->

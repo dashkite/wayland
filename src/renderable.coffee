@@ -2,9 +2,13 @@ import $ from "@dashkite/zest"
 import once from "./helpers/once"
 import Handle from "./handle"
 
-renderable = once ( base = Handle ) ->
+key = Symbol( import.meta.url )
+
+renderable = once key, ( base = Handle ) ->
 
   class extends base
+
+    @[ key ]: renderable
 
     # TODO go back to ( template, content )?
     # otherwise we have the issue of binding to the template

@@ -3,9 +3,13 @@ import Channel from "@dashkite/reactive/channel"
 import once from "./helpers/once"
 import Handle from "./handle"
 
-reactive = once ( base = Handle ) ->
+key = Symbol( import.meta.url )
+
+reactive = once key, ( base = Handle ) ->
 
   class extends base
+
+    @[ key ]: reactive
 
     @_handlers = {}
     @_reactors = []
