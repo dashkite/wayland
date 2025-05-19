@@ -9,7 +9,6 @@ snapshot = ( event ) ->
   path = event.composedPath()
   { name, target, path }
 
-console.log import.meta.url
 key = Symbol( import.meta.url )
 
 eventful = once key, ( base = Handle ) ->
