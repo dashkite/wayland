@@ -1,4 +1,5 @@
 export * from "./eventful"
+export * from "./field"
 export * from "./handle"
 export * from "./observable"
 export * from "./reactive"

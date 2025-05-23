@@ -14,6 +14,7 @@ class Handle extends metaclass()
       get: -> @root.innerHTML
       set: ( html ) -> @root.innerHTML = html
 
+  # TODO should this be a mixin?
   @tag: ( name ) ->
 
     T = @
