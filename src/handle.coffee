@@ -14,7 +14,6 @@ class Handle extends metaclass()
       get: -> @root.innerHTML
       set: ( html ) -> @root.innerHTML = html
 
-  # TODO should this be a mixin?
   @tag: ( name ) ->
 
     T = @
@@ -23,12 +22,10 @@ class Handle extends metaclass()
       constructor: ->
         super()
         @handle = new T @
-        @handle.run()
-        @handle.channel.send name: "start"
-      connectedCallback: -> @handle.channel.send name: "connect"
-      disconnectedCallback: -> @handle.channel.send name: "disconnect"
+      connectedCallback: -> @handle.connect()
+      disconnectedCallback: -> @handle.disconnect()
     
-    # redefine @tag? after all, it doesn't make sense to call it twice?
+    # redefine @tag: doesn't make sense to call it twice
     @tag = name
     @Element = Element
 
