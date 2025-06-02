@@ -18,7 +18,7 @@ shadowed = once key, ( base = Handle ) ->
       if !@dom.shadowRoot?
         @dom.attachShadow 
           mode: "open"
-          delegatesFocus: true
+          delegatesFocus: false
 
 export { shadowed }
 export default shadowed

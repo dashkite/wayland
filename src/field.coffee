@@ -56,6 +56,9 @@ field = once key, ( base = Handle ) ->
         constructor: ->
           super()
           @handle = new T @
+          @attachShadow 
+            mode: "open"
+            delegatesFocus: true
           @handle.run()
           @handle.channel.send name: "start"
           @internals = @attachInternals()
