@@ -17,6 +17,9 @@ eventful = once key, ( base = Handle ) ->
 
     @[ key ]: eventful
 
+    @capture: ( event ) ->
+      ( @listen event ).capture()
+
     @listen: ( event ) ->
 
       do ({ fx } = {}) =>
@@ -67,6 +70,7 @@ eventful = once key, ( base = Handle ) ->
     @keyup: -> @listen "keyup"
     @keydown: -> @listen "keydown"
     @input: -> @listen "input"
+    @invalid: -> @capture "invalid"
     @load: -> @listen "load"
     @mouseup: -> @listen "mouseup"
     @mousedown: -> @listen "mousedown"

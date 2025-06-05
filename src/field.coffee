@@ -16,7 +16,7 @@ field = once key, ( base = Handle ) ->
     
     # overload tag class method leads to some repeated code
     # but we could refactor that into another mixin...
-    
+
     # TODO refactor shared Element code into element mixin
     @tag: ( name ) ->
 
@@ -26,7 +26,6 @@ field = once key, ( base = Handle ) ->
 
         @formAssociated = true
 
-        # these belong on the element not the handle
         @properties
           
           value:
@@ -59,9 +58,9 @@ field = once key, ( base = Handle ) ->
           @attachShadow 
             mode: "open"
             delegatesFocus: true
+          @internals = @attachInternals()
           @handle.run()
           @handle.channel.send name: "start"
-          @internals = @attachInternals()
 
         connectedCallback: -> @handle.channel.send name: "connect"
 
