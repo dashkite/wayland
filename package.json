@@ -46,7 +46,7 @@
   "dependencies": {
     "@dashkite/dominator": "link:../dominator",
     "@dashkite/generic": "link:../generic",
-    "@dashkite/joy": "link:../joy",
+    "@dashkite/joy": "0.5.0",
     "@dashkite/reactive": "link:../reactive",
     "@dashkite/stylist": "0.1.0",
     "@dashkite/zest": "link:../zest",
