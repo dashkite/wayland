@@ -12,8 +12,8 @@ importers:
         specifier: link:../dominator
         version: link:../dominator
       '@dashkite/generic':
-        specifier: link:../generic
-        version: link:../generic
+        specifier: 0.3.0
+        version: 0.3.0
       '@dashkite/joy':
         specifier: 0.5.0
         version: 0.5.0
@@ -609,6 +609,9 @@ packages:
 
   '@dashkite/assert@0.1.4':
     resolution: {integrity: sha512-OLOzI/lA+EwCh6znSexGAG1V4bkaT5gU04xl6ApEluv5jICnHhinZ707MObu+jhVVJ9uHDDlG85O+Afn1aTQoQ==}
+
+  '@dashkite/generic@0.3.0':
+    resolution: {integrity: sha512-A4eHFbIZwrrZmY0//KMiYKHaBUPxUA0PA2QhNZCWC+i11WtPSk6IDuPRkafbFYkmvpj80Gmr4Qznn3ASJIQP1A==}
 
   '@dashkite/genie-clean@0.2.0':
     resolution: {integrity: sha512-1L6Rzoiu7yRixhI6uPTCNSo3wHx/y2RgVlnUDAdO3I4TBCeU1h0Kiytr32ZCK7i3BCatObAdWJt0+9Nc3ZSUIw==}
@@ -2128,6 +2131,10 @@ snapshots:
   '@dashkite/assert@0.1.4':
     dependencies:
       '@dashkite/joy': 0.3.16
+
+  '@dashkite/generic@0.3.0':
+    dependencies:
+      '@dashkite/joy': 0.5.0
 
   '@dashkite/genie-clean@0.2.0':
     dependencies:
