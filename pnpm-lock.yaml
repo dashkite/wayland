@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@dashkite/dominator':
-        specifier: link:../dominator
-        version: link:../dominator
+        specifier: 0.1.0
+        version: 0.1.0
       '@dashkite/generic':
         specifier: 0.5.0
         version: 0.5.0
@@ -610,6 +610,9 @@ packages:
   '@dashkite/assert@0.3.0':
     resolution: {integrity: sha512-x0lHMF8k2CkFrx7gmtT8qoZ3GPk+RPPLRG5RcKMheqS7zDPEDPZ7IkHzXt2kq7LyvTMZZ+TI3suW44+Ms6Mqbg==}
 
+  '@dashkite/dominator@0.1.0':
+    resolution: {integrity: sha512-jSxv9CyVDNRdCJMssB4Nzzl4yoUnPxCaOcgls5lsMEBIB4afbZUDXRM2hvp7ZO70Rr4vlGtDz6JJBhgiIW3BeA==}
+
   '@dashkite/flashdom@0.1.0':
     resolution: {integrity: sha512-+bD3TRss88kn25zNHE8Ab3oamcwLJgFo2k+foQ7obo7bYP5xLeUHV+v585J76p3SsVOnzbT0d2rO+XU6DCRi3Q==}
 
@@ -935,6 +938,9 @@ packages:
 
   diffhtml@1.0.0-beta.19:
     resolution: {integrity: sha512-joNKc9SMaR9qOmci7b5iruBOa/7ddDEeUfl6xP6no+F7sCyFDuPFME5BLcz4g9mIAALPRRatqH1Q1tVgeHGsEw==}
+
+  diffhtml@1.0.0-beta.20:
+    resolution: {integrity: sha512-xSSwGb2dkQsTc7Bl910iySH65PkzsCtowfVGMfrmc2fEwvYrhJUpIEIx+3mpZ1wMWVt+t/0ltVwrjQkMJotxLg==}
 
   doctrine@3.0.0:
     resolution: {integrity: sha512-yS+Q5i3hBf7GBkd4KG8a7eBNNWNGLTaEwwYWUijIYM7zrlYDM0BFXHjjPWlWZ1Rg7UaddZeIDmi9jF3HmqiQ2w==}
@@ -2148,6 +2154,13 @@ snapshots:
     dependencies:
       '@dashkite/joy': 0.6.0
 
+  '@dashkite/dominator@0.1.0':
+    dependencies:
+      '@dashkite/flashdom': 0.1.0
+      '@dashkite/generic': 0.5.0
+      '@dashkite/joy': 0.7.0
+      diffhtml: 1.0.0-beta.20
+
   '@dashkite/flashdom@0.1.0':
     dependencies:
       '@dashkite/generic': 0.9.0
@@ -2498,6 +2511,8 @@ snapshots:
   deep-is@0.1.4: {}
 
   diffhtml@1.0.0-beta.19: {}
+
+  diffhtml@1.0.0-beta.20: {}
 
   doctrine@3.0.0:
     dependencies:
