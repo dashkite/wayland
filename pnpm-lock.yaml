@@ -24,8 +24,8 @@ importers:
         specifier: ^0.3.0
         version: 0.3.0
       '@dashkite/zest':
-        specifier: ^0.1.5
-        version: 0.1.5
+        specifier: ^0.1.6
+        version: 0.1.6
       diffhtml:
         specifier: 1.0.0-beta.30
         version: 1.0.0-beta.30
@@ -675,8 +675,8 @@ packages:
   '@dashkite/zephyr@0.12.1':
     resolution: {integrity: sha512-84wSTbmFpI+tydtzTkMT6FS5ybnNaL4V40fA2c235/UPx/Whg3NRr6BaVLW53+v+bHL6fDbttCTZNNLEtzTxPw==}
 
-  '@dashkite/zest@0.1.5':
-    resolution: {integrity: sha512-qhsg6gskc5jwsmvbJ7v1Q36xvKlQfpptCCn15EtF/aec+BS0v9a0Bgr9lxbcLC/psOvF5rQHinu5oYqdowt93g==}
+  '@dashkite/zest@0.1.6':
+    resolution: {integrity: sha512-zYQ8b3MoTGKZMcHplaNe5zzpQr/49BCMl/WtT5EkVz9bps/NAwUv88mcRD/B0XmrUD9nrEEH4YyD1ZzLWFNXcA==}
 
   '@deno/shim-deno-test@0.5.0':
     resolution: {integrity: sha512-4nMhecpGlPi0cSzT67L+Tm+GOJqvuk8gqHBziqcUQOarnuIax1z96/gJHCSIz2Z0zhxE6Rzwb3IZXPtFh51j+w==}
@@ -2277,7 +2277,7 @@ snapshots:
       '@dashkite/joy': 0.7.0
       js-yaml: 4.1.0
 
-  '@dashkite/zest@0.1.5':
+  '@dashkite/zest@0.1.6':
     dependencies:
       '@dashkite/flashdom': 0.1.5
       '@dashkite/generic': 0.9.4
