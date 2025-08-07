@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@dashkite/dominator':
-        specifier: ^0.1.12
-        version: 0.1.12
+        specifier: ^0.1.13
+        version: 0.1.13
       '@dashkite/generic':
         specifier: ^0.5.0
         version: 0.5.0
@@ -24,8 +24,8 @@ importers:
         specifier: ^0.3.0
         version: 0.3.0
       '@dashkite/zest':
-        specifier: ^0.1.12
-        version: 0.1.12
+        specifier: ^0.1.13
+        version: 0.1.13
       diffhtml:
         specifier: 1.0.0-beta.30
         version: 1.0.0-beta.30
@@ -610,8 +610,8 @@ packages:
   '@dashkite/assert@0.3.0':
     resolution: {integrity: sha512-x0lHMF8k2CkFrx7gmtT8qoZ3GPk+RPPLRG5RcKMheqS7zDPEDPZ7IkHzXt2kq7LyvTMZZ+TI3suW44+Ms6Mqbg==}
 
-  '@dashkite/dominator@0.1.12':
-    resolution: {integrity: sha512-NynKnCAGW2CItt4i7EE8feAW0OS/9x+1yEk9x6n6RaOyUsTTyZWWPsFRpKiy5P+/wZDs02KuJrDhB358qdQCnQ==}
+  '@dashkite/dominator@0.1.13':
+    resolution: {integrity: sha512-vk9rS9xYxCMxeie9UC1BijONzINrG7g0giCWVbd3qUf4n+ELD/ifSBBF45/SIvkPxknvgsurLjn/B2IkcOXhGQ==}
 
   '@dashkite/flashdom@0.1.10':
     resolution: {integrity: sha512-ylHPvXl48BKl/xu2lVbao9RyHKELbX+n2AoveH0KRz65llufIAmh7GupWiefaskX61/gilBY6q/N6tB37nhXKw==}
@@ -675,8 +675,8 @@ packages:
   '@dashkite/zephyr@0.12.1':
     resolution: {integrity: sha512-84wSTbmFpI+tydtzTkMT6FS5ybnNaL4V40fA2c235/UPx/Whg3NRr6BaVLW53+v+bHL6fDbttCTZNNLEtzTxPw==}
 
-  '@dashkite/zest@0.1.12':
-    resolution: {integrity: sha512-YsMTIpva6W5B7RQIass956ngwmTbpMBgOFjxvPS9w953zQ2Qf5i9lYaTBZWUCDPou8ve0O/6ngngWgP1maoH+Q==}
+  '@dashkite/zest@0.1.13':
+    resolution: {integrity: sha512-QEwP8xFFFtVOCwwfixXj6qzoWt6Y2Gi3ghk6x2qW0B/J+Lw424+buZJ8eGU4I2VPb7WUiug5TOEFc8RpdFWzeA==}
 
   '@deno/shim-deno-test@0.5.0':
     resolution: {integrity: sha512-4nMhecpGlPi0cSzT67L+Tm+GOJqvuk8gqHBziqcUQOarnuIax1z96/gJHCSIz2Z0zhxE6Rzwb3IZXPtFh51j+w==}
@@ -2167,7 +2167,7 @@ snapshots:
     dependencies:
       '@dashkite/joy': 0.6.0
 
-  '@dashkite/dominator@0.1.12':
+  '@dashkite/dominator@0.1.13':
     dependencies:
       '@dashkite/flashdom': 0.1.10
       '@dashkite/generic': 0.5.0
@@ -2277,7 +2277,7 @@ snapshots:
       '@dashkite/joy': 0.7.0
       js-yaml: 4.1.0
 
-  '@dashkite/zest@0.1.12':
+  '@dashkite/zest@0.1.13':
     dependencies:
       '@dashkite/flashdom': 0.1.10
       '@dashkite/generic': 0.9.8
