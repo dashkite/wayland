@@ -51,7 +51,7 @@
     "@dashkite/joy": "^0.7.0",
     "@dashkite/reactive": "^0.3.0",
     "@dashkite/stylist": "^0.3.0",
-    "@dashkite/zest": "^0.1.17",
+    "@dashkite/zest": "^0.1.18",
     "diffhtml": "1.0.0-beta.30"
   }
 }
