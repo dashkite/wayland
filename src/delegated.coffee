@@ -5,11 +5,11 @@ import reactive from "./reactive"
 
 key = Symbol( import.meta.url )
 
-shadowed = once key, ( base = Handle ) ->
+delegated = once key, ( base = Handle ) ->
 
   class extends reactive base
 
-    @[ key ]: shadowed
+    @[ key ]: delegated
 
     @getters
       shadow: -> @dom.shadowRoot
@@ -20,5 +20,5 @@ shadowed = once key, ( base = Handle ) ->
           mode: "open"
           delegatesFocus: true
 
-export { shadowed }
-export default shadowed
+export { delegated }
+export default delegated

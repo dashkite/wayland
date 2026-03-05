@@ -1,3 +1,4 @@
+export * from "./delegated"
 export * from "./eventful"
 export * from "./field"
 export * from "./handle"
