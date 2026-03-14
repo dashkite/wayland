@@ -18,6 +18,7 @@ shadowed = once key, ( base = Handle ) ->
       if !@dom.shadowRoot?
         @dom.attachShadow 
           mode: "open"
+          # TODO #7 Define Mixin That Does Not Delegate Focus
           delegatesFocus: true
 
 export { shadowed }
