@@ -6,21 +6,8 @@
 
 Wayland provides a set of highly composable mixins for building native Web Components using a functional and reactive approach. It decouples the UI representation from the underlying logic using a "Handle" pattern, where each component is managed by a specialized controller class.
 
-For example, a reactive component that renders content based on events:
+## Features
 
-```coffeescript
-import { shadowed, renderable, reactive } from "@dashkite/wayland"
-import * as Fn from "@dashkite/joy/function"
-
-class extends do Fn.pipe [ shadowed, renderable, reactive ]
-  @tag "my-component"
-  @reactor ( reactor ) ->
-    for await event from reactor
-      if event.name == "connect"
-        @render "Hello, Wayland!"
-```
-
-### Features
 - **Composable Mixins**: Composable logic for Shadow DOM, rendering, styling, and reactivity.
 - **Reactive Architecture**: Built-in support for event reactors and data streams.
 - **Functional Style**: Promotes declarative logic and clean separation of concerns.
@@ -28,10 +15,10 @@ class extends do Fn.pipe [ shadowed, renderable, reactive ]
 
 ## Installation
 
-Use your favorite package manager to install:
+Use your package manager to install:
 
 ```bash
-pnpm add @dashkite/wayland
+pnpm install @dashkite/wayland
 ```
 
 ## Usage
@@ -51,8 +38,12 @@ class MyComponent extends do Fn.pipe [ shadowed, styleable, reactive ]
 ```
 
 ## Other Resources
+
 - [Reference](./docs/reference.md): Detailed API documentation for mixins and base classes.
 - [Recipes](./docs/recipes.md): Common patterns for building Wayland components.
+- [Technical Notes](./docs/technical-notes.md): Implementation details and architectural context.
+- [Testing](./docs/testing.md): Information regarding testing components.
 
 ## Status
+
 This software is currently in active development and is not yet suitable for production use. Please report bugs or request features via the repository's issue tracker.
